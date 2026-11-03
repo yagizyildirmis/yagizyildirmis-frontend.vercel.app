@@ -82,6 +82,16 @@ h3 {
   margin: var(--bosluk-s) 0 0;
 }
 
+.site-baslik .site-marka {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.site-baslik .site-marka + h1 {
+  margin-top: 0.25rem;
+}
+
 .menu {
   background: var(--renk-ana);
   padding: 0 var(--bosluk-s) var(--bosluk-s);
@@ -438,4 +448,115 @@ footer {
   .etkinlik-listesi {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* Sprint 6: yönetim tablosu, kimlik formları ve küçük ekranlar */
+.admin-baslik {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--bosluk-m);
+  margin-bottom: var(--bosluk-m);
+}
+
+.tablo {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--renk-kart);
+}
+
+.tablo th,
+.tablo td {
+  padding: 0.7rem;
+  border: 1px solid var(--renk-kenar);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.tablo th {
+  background: var(--renk-ana);
+  color: var(--renk-baslik-yazi);
+}
+
+.islemler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bosluk-s);
+}
+
+.buton-kucuk {
+  min-height: 36px;
+  padding: 0 var(--bosluk-m);
+  font-size: 0.95rem;
+}
+
+.buton-sil {
+  background: var(--renk-hata);
+  border-color: var(--renk-hata);
+}
+
+.buton-sil:hover {
+  background: #8e2020;
+  border-color: #8e2020;
+}
+
+.auth-karti {
+  max-width: 560px;
+  padding: var(--bosluk-l);
+  background: var(--renk-kart);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose);
+}
+
+.auth-karti h2 { margin-top: 0; }
+
+.auth-linkler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bosluk-m);
+  margin: var(--bosluk-m) 0 0;
+}
+
+.auth-karti .basari-kutusu { margin: var(--bosluk-m) 0 0; }
+
+@media (max-width: 699px) {
+  .tablo thead { display: none; }
+
+  .tablo,
+  .tablo tbody,
+  .tablo tr,
+  .tablo td {
+    display: block;
+    width: 100%;
+  }
+
+  .tablo tr {
+    margin-bottom: var(--bosluk-m);
+    padding: var(--bosluk-s);
+    border: 1px solid var(--renk-kenar);
+    border-radius: var(--kose);
+    background: var(--renk-kart);
+  }
+
+  .tablo td {
+    display: grid;
+    grid-template-columns: minmax(82px, 0.65fr) minmax(0, 1.35fr);
+    gap: var(--bosluk-s);
+    border: 0;
+    border-bottom: 1px solid var(--renk-kenar);
+    overflow-wrap: anywhere;
+  }
+
+  .tablo td:last-child { border-bottom: 0; }
+
+  .tablo td[data-baslik]::before {
+    content: attr(data-baslik) ":";
+    font-weight: bold;
+  }
+
+  .tablo td[data-baslik="İşlemler"] { display: block; }
+  .tablo td[data-baslik="İşlemler"]::before { display: block; margin-bottom: var(--bosluk-s); }
+
+  .admin-baslik { align-items: flex-start; flex-direction: column; }
+  .auth-karti { padding: var(--bosluk-m); }
 }
