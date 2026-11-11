@@ -37,3 +37,17 @@ npm run dev
 ## Vercel'e yükleme
 
 Vercel projesini içe aktarırken **Root Directory** değerini `frontend` seçin. Build komutu `npm run build`, çıktı klasörü `dist` olmalıdır. `frontend/vercel.json`, React Router adreslerinin doğrudan açılabilmesi için SPA rewrite kuralını içerir. Canlı adresi yayınlamadan sonra bu README'ye ekleyin.
+
+## Backend (Sprint 7)
+
+Backend, frontend'den ayrı olarak `localhost:3000` adresinde çalışan Express REST API'sidir. Bu sprintte API Vercel'e yüklenmez; frontend'in yayın ayarları değişmez.
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Sağlık kontrolü: `GET http://localhost:3000/health`
+
+Etkinlik listesi ve detayları `GET /events`, `GET /events/:id` ile okunur. Yeni etkinlik `POST /events` ile eklenir. Kategori filtresi için `GET /events?category=Atölye` kullanılabilir. Bu sprintte veriler sunucu belleğinde tutulur; sunucu yeniden başlatılınca başlangıçtaki altı etkinlik geri yüklenir. İstek örnekleri `backend/requests/kampus-api.json` Postman koleksiyonundadır.
